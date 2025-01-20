@@ -6,7 +6,7 @@
 /*   By: nade-lim <nade-lim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:31:48 by nade-lim          #+#    #+#             */
-/*   Updated: 2025/01/14 18:41:51 by nade-lim         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:05:39 by nade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ int	main(int argc, char **argv)
 		ft_printf("Invalid PID\n");
 		return (1);
 	}
+	if (kill(pid, 0) == -1)
+	{
+		ft_printf("No process with PID %d found.\n", pid);
+		return 1;
+}
 	signal(SIGUSR1, update_wait_response);
 	signal(SIGUSR2, update_wait_response);
 	send_string_in_bits(pid, argv[2]);
